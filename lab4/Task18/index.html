@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 18 - Бронирование мероприятия</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input[type="text"], input[type="email"], input[type="number"], select { width: 300px; padding: 8px; box-sizing: border-box; }
+        #message { color: red; margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>Бронирование мероприятия</h2>
+    <form id="bookingForm">
+        <div class="form-group">
+            <label for="userData">Имя и Фамилия:</label>
+            <input type="text" id="userData" placeholder="Введите имя и фамилию">
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" placeholder="example@domain.com">
+        </div>
+        <div class="form-group">
+            <label for="category">Категория билета:</label>
+            <select id="category">
+                <option value="">Выберите категорию</option>
+                <option value="1000">Стандартный (1000 руб.)</option>
+                <option value="2500">Бизнес (2500 руб.)</option>
+                <option value="5000">VIP (5000 руб.)</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="quantity">Количество билетов:</label>
+            <input type="number" id="quantity" value="1" min="1">
+        </div>
+        <div class="form-group">
+            <label>Дополнительные опции:</label>
+            <label><input type="checkbox" id="parking" value="500"> Парковочное место (+500 руб.)</label>
+            <label><input type="checkbox" id="material" value="300"> Раздаточные материалы (+300 руб.)</label>
+        </div>
+        <button type="submit">Забронировать</button>
+        <p id="message"></p>
+    </form>
+
+    <script>
+        const form = document.getElementById('bookingForm');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const userData = document.getElementById('userData').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const categorySelect = document.getElementById('category');
+            const quantityInput = parseInt(document.getElementById('quantity').value);
+            const messageEl = document.getElementById('message');
+            messageEl.style.color = 'red';
+
+            if (userData === '') {
+                messageEl.textContent = 'Введите данные пользователя';
+                return;
+            }
+            if (email === '') {
+                messageEl.textContent = 'Введите e-mail';
+                return;
+            }
+            if (categorySelect.value === '') {
+                messageEl.textContent = 'Выберите категорию билета';
+                return;
+            }
+            if (isNaN(quantityInput) || quantityInput <= 0) {
+                messageEl.textContent = 'Количество билетов должно быть больше 0';
+                return;
+            }
+
+            // Расчет стоимости
+            let basePrice = parseInt(categorySelect.value);
+            let total = basePrice * quantityInput;
+
+            if (document.getElementById('parking').checked) {
+                total += parseInt(document.getElementById('parking').value) * quantityInput;
+            }
+            if (document.getElementById('material').checked) {
+                total += parseInt(document.getElementById('material').value) * quantityInput;
+            }
+
+            messageEl.style.color = 'green';
+            messageEl.textContent = `Бронирование успешно! Итоговая стоимость: ${total} руб.`;
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 2 - Форма обратной связи</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input, select, textarea, button { width: 300px; padding: 8px; box-sizing: border-box; }
+        textarea { height: 100px; }
+        #message { color: red; margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>Форма обратной связи</h2>
+    <form id="feedbackForm">
+        <div class="form-group">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" placeholder="Введите ваше имя">
+        </div>
+        <div class="form-group">
+            <label for="topic">Тема сообщения:</label>
+            <select id="topic">
+                <option value="">Выберите тему</option>
+                <option value="support">Техническая поддержка</option>
+                <option value="cooperation">Сотрудничество</option>
+                <option value="other">Другое</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="textMessage">Текст сообщения:</label>
+            <textarea id="textMessage" placeholder="Введите сообщение"></textarea>
+        </div>
+        <button type="submit">Отправить</button>
+        <p id="message"></p>
+    </form>
+
+    <script>
+        const form = document.getElementById('feedbackForm');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value.trim();
+            const topic = document.getElementById('topic').value;
+            const textMessage = document.getElementById('textMessage').value.trim();
+            const messageEl = document.getElementById('message');
+            messageEl.style.color = 'red';
+
+            if (name === '') {
+                messageEl.textContent = 'Поле "Имя" не должно быть пустым';
+                return;
+            }
+            if (topic === '') {
+                messageEl.textContent = 'Выберите тему сообщения';
+                return;
+            }
+            if (textMessage === '') {
+                messageEl.textContent = 'Поле "Текст сообщения" не должно быть пустым';
+                return;
+            }
+
+            messageEl.style.color = 'green';
+            messageEl.textContent = 'Форма успешно заполнена и отправлена!';
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель заказов — SPA</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Панель управления заказами</h1>
+        <nav>
+            <button class="nav-btn active" data-status="new">Новые <span id="count-new" class="badge">0</span></button>
+            <button class="nav-btn" data-status="in-progress">В работе <span id="count-in-progress" class="badge">0</span></button>
+            <button class="nav-btn" data-status="done">Готовые <span id="count-done" class="badge">0</span></button>
+        </nav>
+    </header>
+    <main id="content" aria-live="polite">
+        <div id="ordersList"></div>
+    </main>
+    <script src="app.js" defer></script>
+</body>
+</html>

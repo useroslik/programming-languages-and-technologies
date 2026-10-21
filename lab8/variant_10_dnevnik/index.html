@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вариант 10 — Мини-дневник</title><link rel="stylesheet" href="style.css"><script src="app.js" defer></script>
+</head>
+<body><main class="container">
+  <header><p class="eyebrow">Лабораторная работа № 8 · Вариант 10</p><h1>Мини-дневник</h1><p>Добавляй записи с датой. Они сохраняются в браузере и доступны после обновления страницы.</p></header>
+  <section class="panel"><form id="entryForm">
+    <label for="entryDate">Дата</label><input id="entryDate" type="date" required>
+    <label for="entryText">Запись</label><textarea id="entryText" rows="4" maxlength="1000" required placeholder="Что произошло сегодня?"></textarea>
+    <button type="submit">Добавить запись</button>
+  </form><p id="message" class="message" role="status"></p></section>
+  <section class="panel"><div class="section-title"><h2>Мои записи</h2><span id="count" class="count">0 записей</span></div><div id="entries" class="entries"></div></section>
+  <footer>Используются JSON.stringify(), JSON.parse() и localStorage.</footer>
+</main></body></html>

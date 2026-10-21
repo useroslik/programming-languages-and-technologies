@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вариант 2 — Персональная анкета</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="container">
+    <header><p class="eyebrow">Лабораторная работа № 8 · Вариант 2</p><h1>Персональная анкета</h1>
+      <p>Заполни поля и сохрани данные. После обновления страницы анкета восстановится.</p>
+    </header>
+    <section class="panel">
+      <form id="profileForm">
+        <label for="name">Имя</label><input id="name" name="name" maxlength="60" required placeholder="Например, Али">
+        <label for="group">Группа</label><input id="group" name="group" maxlength="30" required placeholder="Например, ИС-23">
+        <label for="city">Город</label><input id="city" name="city" maxlength="60" required placeholder="Например, Алматы">
+        <div class="actions"><button type="submit">Сохранить анкету</button><button type="button" class="secondary" id="clearBtn">Очистить</button></div>
+      </form>
+      <p id="message" class="message" role="status"></p>
+    </section>
+    <section class="panel">
+      <h2>Сохранённые данные</h2><div id="savedProfile" class="saved">Анкета пока не заполнена.</div>
+    </section>
+    <footer>Данные хранятся в localStorage вашего браузера.</footer>
+  </main>
+</body>
+</html>

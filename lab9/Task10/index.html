@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Задание 10: Публикации пользователя</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app10.js" defer></script>
+</head>
+<body>
+    <h1>Поиск публикаций по ID пользователя</h1>
+    <div class="search-box">
+        <label for="user-id-input">Ведите ID пользователя (1-10):</label>
+        <input type="number" id="user-id-input" min="1" max="10" value="1">
+        <button id="load-posts">Получить публикации</button>
+    </div>
+    <p id="status" role="status"></p>
+    <ul id="posts-list"></ul>
+</body>
+</html>
